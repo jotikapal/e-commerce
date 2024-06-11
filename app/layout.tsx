@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/db/SessionProvider";
+import Sidebar from "./components/Sidebar";
+// import Login from "./login/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +22,16 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* <Login /> */}
 
         <SessionProvider session={session}>
           <Navbar />
-          {children}
+          <div className="flex flex-row">
+          <Sidebar />
+            {children}
+          </div>
         </SessionProvider>
-        
+
       </body>
     </html>
   );
