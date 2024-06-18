@@ -3,6 +3,8 @@ import { connect } from '@/db/db';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
 import { z } from "zod";
+import Category from '@/models/Category';
+import Subcategory from '@/models/Subcategory';
 
 const productSchema = z.object({
     name: z.string().min(3, { message: "Must be 3 or more characters long" }),
@@ -18,36 +20,49 @@ const productSchema = z.object({
 })
 
 export const POST = async (req: any) => {
-    const session = await getServerSession();
+    // const session = await getServerSession();
 
-    if (!session) {
-        return NextResponse.json({ message: "Not Logged in" }, { status: 401 });
-    }
+    // if (!session) {
+    //     return NextResponse.json({ message: "Not Logged in" }, { status: 401 });
+    // }
+
     try {
         const body = await req.json();
+        console.log(body,"body")
         const parsedData = productSchema.parse(body);
-        // console.log(parsedData,"parsedData")
+        
         await connect();
+        const { categoryId, subCategoryId } = body;
+        const isCategoryIdExist = await Category.findById(categoryId).lean()
+        if (!isCategoryIdExist) {
+            return NextResponse.json({ message: "Category Id does not exist" }, { status: 400 })
+        }
+
+        const isSubcategoryIdExist = await Subcategory.findById(subCategoryId).lean()
+        if (!isSubcategoryIdExist) {
+            return NextResponse.json({ message: "Subcategory Id does not exist" }, { status: 400 })
+        }
+
         const newProduct = new Product(body)
-        console.log(newProduct,"newProduct")
+        console.log(newProduct, "newProduct")
         await newProduct.save();
         return NextResponse.json({ message: "Product is registered" }, { status: 201 });
 
     } catch (error: any) {
-        console.log(error,"error")
-        
+        console.log(error, "error")
+
         if (error instanceof z.ZodError) {
             // If validation fails, return the error messages
             return NextResponse.json({
-                errors: error.errors.map((e:any) => ({
-                  path: e.path.join('.'),
-                  message: e.message,
+                errors: error.errors.map((e: any) => ({
+                    path: e.path.join('.'),
+                    message: e.message,
                 })),
-               }, { status: 400 });
-          } else {
+            }, { status: 400 });
+        } else {
             // Handle other errors
-            return NextResponse.json({ message: 'Internal server error' },{status: 500});
-          }
+            return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
+        }
     }
 };
 

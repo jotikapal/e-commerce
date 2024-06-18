@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import { z } from "zod";
 import { getServerSession } from 'next-auth';
 import mongoose from 'mongoose';
+import Category from '@/models/Category';
 
 const categorySchema = z.object({
     name: z.string().min(3, { message: "must be 3 or more characters long" }).max(20, { message: "must be max 20 characters" })
@@ -28,7 +29,13 @@ export const POST = async (req: any) => {
         if (!isValid) {
             return NextResponse.json({ message: "Category Id is invalid" }, { status: 400 })
         }
+        const isCategoryIdExist = await Category.findById(categoryId)
+        console.log(isCategoryIdExist,"isCategoryIdExist")
 
+        if(!isCategoryIdExist){
+            return NextResponse.json({message:"Category Id doest not exist"},{status:400})
+        }
+        
         const category = await Subcategory.findOne({ name });
 
         if (category) {
@@ -57,7 +64,7 @@ export const POST = async (req: any) => {
 export const GET = async () => {
     try {
         await connect();
-        const subcategories = await Subcategory.find();
+        const subcategories = await Subcategory.find().populate("categoryId").lean();
 
         return NextResponse.json(subcategories, { status: 200 })
     } catch (error: any) {

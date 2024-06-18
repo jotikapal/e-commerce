@@ -16,12 +16,14 @@ const productSchema = new Schema(
             type: String,
             required: true
         },
-        category:{
-            type: String,
+        categoryId:{
+            type: Schema.Types.ObjectId,
+            ref:'Category',
             required: true
         },
-        subcategory:{
-            type: String,
+        subCategoryId:{
+            type: Schema.Types.ObjectId,
+            ref:'Subcategory',
             required: true
         },
         variants:{
