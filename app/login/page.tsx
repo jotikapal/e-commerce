@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 const Login = () => {
   const router = useRouter();
   const [error, setError] = useState("");
-  // const { data: session, status: sessionStatus } = useSession();
   const session = useSession();
 
   useEffect(() => {
@@ -15,12 +14,6 @@ const Login = () => {
          router.replace("/");
        }
      }, [session, router]);
-
-  // useEffect(() => {
-  //   if (sessionStatus === "authenticated") {
-  //     router.replace("/dashboard");
-  //   }
-  // }, [sessionStatus, router]);
 
   const isValidEmail = (email: string) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -47,6 +40,7 @@ const Login = () => {
       email,
       password,
     });
+    console.log(res,"response")
 
     if (res?.error) {
       setError("Invalid email or password");
@@ -55,11 +49,6 @@ const Login = () => {
       setError("");
     }
   };
-
-  // if (sessionStatus === "loading") {
-  //   return <h1>Loading...</h1>;
-  // }
-
 
   return (
     // session.status !== "authenticated" && 

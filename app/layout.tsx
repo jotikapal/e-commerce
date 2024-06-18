@@ -19,6 +19,8 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
 
   const session = await getServerSession();
 
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -27,7 +29,7 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
         <SessionProvider session={session}>
           <Navbar />
           <div className="flex flex-row">
-          <Sidebar />
+        {session ? <Sidebar /> : null  } 
             {children}
           </div>
         </SessionProvider>

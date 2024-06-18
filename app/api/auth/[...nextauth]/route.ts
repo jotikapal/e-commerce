@@ -43,6 +43,23 @@ export const authOptions: any = {
         // }),
         // ...add more providers here
     ],
+    session: async ({ session, token, user }: any) => {
+        console.log(session, token, "session,token");
+        if (session && session.user) {
+            session.user.id = token.sub;
+            session.user.userType = "ADMIN";
+        }
+
+        return session;
+    },
+    jwt: ({ token, user }: any) => {
+        console.log(token, user);
+        if (user) {
+            token.sub = user.id;
+        }
+
+        return token;
+    },
     // pages: {
     //     signIn: '/auth/signin',  // You can specify a custom sign-in page here
     //     error: '/auth/error',    // You can specify a custom error page here

@@ -1,6 +1,8 @@
 import Product from '@/models/Product'
 import { connect } from '@/db/db';
 import { NextResponse } from 'next/server';
+import { getServerSession } from "next-auth";
+import { z } from "zod";
 
 export const GET = async (req: any, { params }: { params: { id: string } }) => {
     try {
@@ -19,22 +21,41 @@ export const GET = async (req: any, { params }: { params: { id: string } }) => {
     }
 }
 
+const productSchema = z.object({
+    name: z.string().min(3, { message: "Must be 3 or more characters long" }),
+    description: z.string().length(3, { message: "Must be exactly 3 characters long" }),
+    image: z.string().url({ message: "Invalid url" }),
+    category: z.string().min(3, { message: "Must be 3 or more characters long" }),
+    subcategory: z.string().min(3, { message: "Must be 5 or more characters long" }),
+    variants: z.string().min(3, { message: "Must be 5 or more characters long" }),
+    price: z.number({
+        required_error: "Price is required",
+        invalid_type_error: "Price must be a number",
+    }),
+})
+
 export const PATCH = async (req: Request, { params }: { params: { id: string } }) => {
-    const { name, description, image, category, subcategory, variants, price } = await req.json();
+    const session = await getServerSession();
+
+    if (!session) {
+        return NextResponse.json({ message: "Not Logged in" }, { status: 401 });
+    }
 
     try {
+        const body = await req.json();
+        const parsedData = productSchema.parse(body)
         await connect();
         const product = await Product.findById(params.id);
         if (!product) {
             return NextResponse.json({ message: "Product not found" }, { status: 404 });
         }
-        product.name = name;
-        product.description = description;
-        product.image = image;
-        product.category = category;
-        product.subcategory = subcategory;
-        product.variants = variants;
-        product.price = price;
+        product.name = parsedData.name;
+        product.description = parsedData.description;
+        product.image = parsedData.image;
+        product.category = parsedData.category;
+        product.subcategory = parsedData.subcategory;
+        product.variants = parsedData.variants;
+        product.price = parsedData.price;
 
         await product.save();
 

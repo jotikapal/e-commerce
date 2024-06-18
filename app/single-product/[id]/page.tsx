@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const SingleProductPage = ({
     params,
@@ -42,143 +43,49 @@ const SingleProductPage = ({
         }
     }
 
-    const handleUpdate = async (e: any) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(`/api/product/${params.id}`, {
-                method: "PATCH",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: data.name,
-                    description: data.description,
-                    image: data.image,
-                    category: data.category,
-                    subcategory: data.subcategory,
-                    variants: data.variants,
-                    price: data.price
-                })
-            })
-            if (response.ok) {
-                setClick(false)
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setData((prevData: any) => ({ ...prevData, [name]: value }))
-    }
-
     useEffect(() => {
         if (params.id) {
             getData()
         }
     }, [params.id]);
 
-    console.log(data, "data")
+    // console.log(data, "data")
 
     return (
-        <div>
+        <div className='w-full border rounded m-5'>
+            <div className='bg-gray-50 py-5 pl-10 font-semibold text-lg text-gray-400'>
+                <h2>Product Details</h2>
+            </div>
             {data && (
                 <>
-                    <div>
-                        <div>
-                            <div>{data.name}</div>
-                            <div>{data.description}</div>
-                            <div>{data.image}</div>
-                            <div>{data.category}</div>
-                            <div>{data.subcategory}</div>
-                            <div>{data.variants}</div>
-                            <div>{data.price}</div>
+                    <div className='pt-16 px-8 ml-16'>
+                        <div className='flex mb-8'>
+                            <div className='font-bold mr-10'>
+                                <div className='mb-2'>Name:</div>
+                                <div className='mb-2'>Description:</div>
+                                <div className='mb-2'>Image:</div>
+                                <div className='mb-2'>Category:</div>
+                                <div className='mb-2'>Subcategory:</div>
+                                <div className='mb-2'>Variants:</div>
+                                <div className='mb-2'>Price:</div>
+                            </div>
+                            <div className=''>
+                                <div className='mb-2'>{data.name}</div>
+                                <div className='mb-2'>{data.description}</div>
+                                <div className='mb-2'>{data.image}</div>
+                                <div className='mb-2'>{data.category}</div>
+                                <div className='mb-2'>{data.subcategory}</div>
+                                <div className='mb-2'>{data.variants}</div>
+                                <div className='mb-2'>{data.price}</div>
+                            </div>
                         </div>
-                        <button onClick={deleteProduct} className="btn">Delete Product</button>
-                        <button onClick={() => setClick(!click)} className="btn">Edit Product</button>
+                        <div>
+                            <button className="btn mr-2 ml-">
+                                <Link href={`/update-product/${data._id}`}>Edit Product</Link>
+                            </button>
+                            <button onClick={deleteProduct} className="btn ">Delete Product</button>
+                        </div>
                     </div>
-                    {click &&
-                        <div>
-                            <form onSubmit={handleUpdate}>
-                                <label className="input input-bordered flex items-center gap-2">
-                                    Name:
-                                    <input
-                                        type="text"
-                                        className="grow"
-                                        placeholder="type here"
-                                        name='name'
-                                        value={data.name}
-                                        onChange={handleChange} />
-                                </label>
-                                <label className="input input-bordered flex items-center gap-2">
-                                    Description:
-                                    <input
-                                        type="text"
-                                        className="grow"
-                                        placeholder="type here"
-                                        name='description'
-                                        value={data.description}
-                                        onChange={handleChange} />
-                                </label>
-                                <label className="input input-bordered flex items-center gap-2">
-                                    Image:
-                                    <input
-                                        type="text"
-                                        className="grow"
-                                        placeholder="type here"
-                                        name='image'
-                                        value={data.image}
-                                        onChange={handleChange} />
-                                </label>
-                                <select
-                                    className="select w-full max-w-xs"
-                                    name='category'
-                                    value={data.category}
-                                    onChange={handleChange} >
-                                    <option disabled selected>Select category</option>
-                                    <option>Homer</option>
-                                    <option>Marge</option>
-                                    <option>Bart</option>
-                                    <option>Lisa</option>
-                                    <option>Maggie</option>
-                                </select>
-                                <select
-                                    className="select w-full max-w-xs"
-                                    name='subcategory'
-                                    value={data.subcategory}
-                                    onChange={handleChange}>
-                                    <option disabled selected>Select subcategory</option>
-                                    <option>Homer</option>
-                                    <option>Marge</option>
-                                    <option>Bart</option>
-                                    <option>Lisa</option>
-                                    <option>Maggie</option>
-                                </select>
-                                <select
-                                    className="select w-full max-w-xs"
-                                    name='variants'
-                                    value={data.variants}
-                                    onChange={handleChange}>
-                                    <option disabled selected>Select variants</option>
-                                    <option>Homer</option>
-                                    <option>Marge</option>
-                                    <option>Bart</option>
-                                    <option>Lisa</option>
-                                    <option>Maggie</option>
-                                </select>
-                                <label className="input input-bordered flex items-center gap-2">
-                                    Price:
-                                    <input
-                                        type="text"
-                                        className="grow"
-                                        placeholder="type here"
-                                        name='price'
-                                        value={data.price}
-                                        onChange={handleChange} />
-                                </label>
-                                <button type='submit'>Submit</button>
-                            </form>
-                        </div>
-                    }
                 </>
             )}
         </div>
