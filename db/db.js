@@ -4,7 +4,7 @@ export const connect = async () => {
     if (mongoose.connections[0].readyState) return;
 
     try {
-        await mongoose.connect('mongodb+srv://jotikanepal7:7LY8PDVICouehIlT@cluster0.cgskmmf.mongodb.net/e-commerce?retryWrites=true&w=majority&appName=Cluster0', {
+        await mongoose.connect(process.env.DB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
