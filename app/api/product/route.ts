@@ -12,7 +12,7 @@ const productSchema = z.object({
     image: z.string().url({ message: "Invalid url" }),
     // category: z.string().min(3, { message: "Must be 3 or more characters long" }),
     // subcategory: z.string().min(3, { message: "Must be 5 or more characters long" }),
-    variants: z.string().min(3, { message: "Must be 5 or more characters long" }),
+    // variants: z.array(z.string().min(3, { message: "Each variant must be 3 or more characters long" })),
     price: z.number({
         required_error: "Price is required",
         invalid_type_error: "Price must be a number",

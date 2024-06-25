@@ -8,6 +8,7 @@ import Category from '@/models/Category';
 
 const categorySchema = z.object({
     name: z.string().min(3, { message: "must be 3 or more characters long" }).max(20, { message: "must be max 20 characters" })
+    
 })
 
 export const POST = async (req: any) => {
@@ -22,6 +23,7 @@ export const POST = async (req: any) => {
         await connect();
 
         const { name, categoryId } = body
+        console.log(categoryId,"categoryId")
 
         var isValid = mongoose.Types.ObjectId.isValid(categoryId);
         console.log(isValid, "isValid")

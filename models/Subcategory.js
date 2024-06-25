@@ -10,6 +10,10 @@ const subcategory = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
         required: true,
+    },
+    variants:{
+        type:Array,
+        required:true
     }
 })
 export default mongoose.models.Subcategory || mongoose.model("Subcategory", subcategory);

@@ -27,7 +27,7 @@ const productSchema = new Schema(
             required: true
         },
         variants:{
-            type: String,
+            type: Array,
             required: true
         },
         price: {

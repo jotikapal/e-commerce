@@ -26,7 +26,7 @@ const Sidebar = async () => {
                     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
                         {session.user.userType === "ADMIN" ? (
-                            <li><Link href='/product-form'>Add Product</Link></li>
+                            <li><Link href='/add-product'>Add Product</Link></li>
                         ) : null}
                         <li><Link href='/all-products'>All Products</Link></li>
                     </ul>
