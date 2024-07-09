@@ -52,9 +52,9 @@ const Login = () => {
 
   return (
     // session.status !== "authenticated" && 
-    <div className='flex justify-center'>
-      <div className='flex justify-center flex-col w-3/12 border rounded bg-gray-100 p-5'>
-        <div className='flex justify-center mb-7'>
+    <div className='flex justify-center w-full my-24'>
+      <div className='flex justify-center flex-col w-3/12 border rounded bg-gray-100 px-7 py-10'>
+        <div className='flex justify-center mb-10'>
           <h2 className='text-xl'>Login</h2>
         </div>
         <form onSubmit={handleSubmit}>
@@ -78,7 +78,7 @@ const Login = () => {
             Login</button>
           <p className='text-red-600 text-[16px] mb-4'>{error && error}</p>
         </form>
-        <div className='flex justify-center flex-col mt-4'>
+        <div className='flex justify-center flex-col mt-7'>
           <div className='text-gray-500 mb-2 text-center'>-OR-</div>
           <div>
             <Link href="/signup" className='block text-blue-500 hover:underline text-center'>SignUp</Link>

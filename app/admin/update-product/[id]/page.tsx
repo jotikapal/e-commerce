@@ -38,7 +38,7 @@ const UpdateProduct = ({ params, }: { params: { id: string } }) => {
                 })
             })
             if (response.ok) {
-                router.push(`/single-product/${params.id}`)
+                router.push(`/admin/single-product/${params.id}`)
             }
         } catch (error) {
             console.log(error);

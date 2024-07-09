@@ -103,7 +103,7 @@ const page = () => {
                                         <td><span className="badge badge-ghost badge-sm">{item.price}.Rs</span></td>
                                         <th>
                                             <button className="btn btn-ghost btn-xs">
-                                                <Link href={`/single-product/${item._id}`}>See Product</Link>
+                                                <Link href={`/admin/single-product/${item._id}`}>See Product</Link>
                                             </button>
                                         </th>
                                     </tr>

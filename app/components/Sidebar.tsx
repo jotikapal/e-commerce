@@ -6,7 +6,6 @@ import User from '@/models/User';
 const Sidebar = async () => {
 
     // let session = await getServerSession();
-    // console.log(session, "session")
 
     let session: any = await getServerSession();
     console.log(session, "session");
@@ -14,8 +13,8 @@ const Sidebar = async () => {
     session.user.userType = "ADMIN";
 
     return (
-        <div>
-            <div className="drawer lg:drawer-open">
+        <div className=''>
+            <div className="drawer lg:drawer-open bg-gray-400 text-gray-900 h-full">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
                     {/* Page content here */}
@@ -23,12 +22,13 @@ const Sidebar = async () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    {/* bg-base-200 text-base-content */}
+                    <ul className="menu p-4 w-80 min-h-full ">
                         {/* Sidebar content here */}
                         {session.user.userType === "ADMIN" ? (
-                            <li><Link href='/add-product'>Add Product</Link></li>
+                            <li className='my-2'><Link href='/admin/add-product'>Add Product</Link></li>
                         ) : null}
-                        <li><Link href='/all-products'>All Products</Link></li>
+                        <li className='mb-2'><Link href='/admin/all-products'>All Products</Link></li>
                     </ul>
                 </div>
             </div>

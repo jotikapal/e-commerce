@@ -60,9 +60,9 @@ const page = () => {
         }
     };
     return (
-        <div className='flex justify-center'>
-            <div className='flex justify-center flex-col w-3/12 border rounded bg-gray-100 p-5'>
-                <div className='flex justify-center mb-7'>
+        <div className='flex justify-center w-full my-24'>
+            <div className='flex justify-center flex-col w-3/12 border rounded bg-gray-100 p-8'>
+                <div className='flex justify-center mb-10'>
                     <h2 className='text-xl'>Signup</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
