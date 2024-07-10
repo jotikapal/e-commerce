@@ -84,7 +84,9 @@ const Navbar = () => {
                     src="https://cdn.rareblocks.xyz/collection/celebration/images/logo-alt.svg"
                     alt=""
                   /> */}
-                    <h1 className="text-3xl font-bold font-sans text-gray-500">Shoecart</h1>
+                  <h1 className="text-3xl font-bold font-sans text-gray-500">
+                    Shoecart
+                  </h1>
                 </a>
               </div>
 
@@ -126,7 +128,7 @@ const Navbar = () => {
 
                 <Link href="#" className="text-base font-medium text-white">
                   {" "}
-                  Membership{" "}
+                  Subscription{" "}
                 </Link>
               </div>
               {!session ? (
@@ -140,16 +142,17 @@ const Navbar = () => {
                   Login{" "}
                 </Link>
               ) : (
-                <div >
-                <span className="text-white mr-4">{session.user?.email}</span>
-                  <button
-                  className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-black transition-all duration-200 bg-yellow-400 border border-transparent rounded-full lg:inline-flex hover:bg-yellow-500 focus:bg-yellow-500"
+                <div>
+                  <span className="text-white mr-4">{session.user?.email}</span>
+                  <Link
+                    href="/login"
+                    className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-black transition-all duration-200 bg-yellow-400 border border-transparent rounded-full lg:inline-flex hover:bg-yellow-500 focus:bg-yellow-500"
                     onClick={() => {
                       signOut();
                     }}
                   >
                     Logout
-                  </button>
+                  </Link>
                 </div>
               )}
             </nav>
