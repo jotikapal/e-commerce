@@ -1,0 +1,16 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+let requestCount = 0;
+export default async function middleware(req: NextRequest) {
+    const session = await getServerSession();
+    console.log('sess*********************ion', session)
+
+  requestCount++;
+  const res = NextResponse.next();
+  console.log(requestCount, ")))))");
+  return res;
+}
+
+// export const config = {
+//   matcher: "/api/:path*",
+// };

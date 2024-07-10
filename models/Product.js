@@ -37,4 +37,8 @@ const productSchema = new Schema(
     },
     { timestamps: true }
 )
+
+// how to add indexing
+// how to add methods in schema
+// how to create sub schemas
 export default mongoose.models.Product || mongoose.model("Product", productSchema);

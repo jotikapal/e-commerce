@@ -8,7 +8,7 @@ export const POST = async (req: any) => {
         const { name, email, password } = await req.json();
         await connect();
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email }).lean(); // always use lean if not updating
 
         if (existingUser) {
             return new NextResponse("Email is already in use", { status: 400 });

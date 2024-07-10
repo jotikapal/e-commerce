@@ -44,7 +44,7 @@ export const authOptions: any = {
         // ...add more providers here
     ],
     session: async ({ session, token, user }: any) => {
-        console.log(session, token, "session,token");
+        console.log(session, token, "session,***************token");
         if (session && session.user) {
             session.user.id = token.sub;
             session.user.userType = "ADMIN";
@@ -53,7 +53,7 @@ export const authOptions: any = {
         return session;
     },
     jwt: ({ token, user }: any) => {
-        console.log(token, user);
+        console.log(token, "***********************", user);
         if (user) {
             token.sub = user.id;
         }

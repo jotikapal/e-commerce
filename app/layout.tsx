@@ -27,8 +27,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Navbar />
-          <div className="flex flex-row ">
-            {session ? <Sidebar /> : null}
+          <div className="flex flex-row ">            
             {children}
           </div>
           <Footer />

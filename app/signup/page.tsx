@@ -32,7 +32,7 @@ const page = () => {
         }
 
         if (!password || password.length < 8) {
-            setError("Password is invalid");
+            setError("Password should be more than 8 characters");
             return;
         }
 
