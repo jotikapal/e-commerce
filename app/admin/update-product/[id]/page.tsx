@@ -28,7 +28,7 @@ const UpdateProduct = ({ params, }: { params: { id: string } }) => {
                 method: "PATCH",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: data.name,
+                    productName: data.productName,
                     description: data.description,
                     image: data.image,
                     category: data.category,
@@ -75,7 +75,7 @@ const UpdateProduct = ({ params, }: { params: { id: string } }) => {
                         className="grow"
                         placeholder="type here"
                         name='name'
-                        value={data.name}
+                        value={data.productName}
                         onChange={handleChange} />
                 </label>
                 <label className="input input-bordered flex items-center gap-2 mb-3">

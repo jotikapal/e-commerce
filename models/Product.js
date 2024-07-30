@@ -3,7 +3,7 @@ import { type } from "os";
 const { Schema } = mongoose;
 const productSchema = new Schema(
     {
-        name: {
+        productName: {
             type: String,
             required: true
         },

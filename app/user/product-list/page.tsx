@@ -35,13 +35,14 @@ function AddToCartButton({ onClick }:AddToCartButtonProp) {
 
 interface Product {
   image: string;
-  name: string;
+  productName: string;
   price: number;
   quantity:number;
 }
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [productCount,setProductCount] = useState(0)
 
   const fetchData = async () => {
     try {
@@ -57,15 +58,19 @@ const ProductList = () => {
   };
 
   useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setProductCount(cart.length);
+
     fetchData();
   }, []);
 
   const handleAddToCart = (product: Product) => {
-    console.log(product)
+    // console.log(product)
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push({...product,quantity:1});
-    console.log(cart,"cart")
+    // console.log(cart,"cart")
     localStorage.setItem("cart", JSON.stringify(cart));
+    setProductCount(cart.length);
   };
 
   return (
@@ -77,7 +82,7 @@ const ProductList = () => {
           </h2>
         </div>
 
-        <Link href="/user/cart" className="flex items-center justify-center">
+        <Link href="/user/cart" className="flex items-center justify-center relative">
           <button
             type="button"
             className="w-full flex items-center justify-center gap-3  px-6 py-3 bg-yellow-400 text-base text-gray-800 font-semibold rounded-xl"
@@ -92,6 +97,7 @@ const ProductList = () => {
             </svg>
             Go to cart
           </button>
+          <div className="bg-red-500 rounded-full w-1/6 absolute -top-3 -right-3 text-center text-white font-semibold">{productCount}</div>
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -121,7 +127,7 @@ const ProductList = () => {
             </div>
             <div className="text-center bg-gray-100 p-6">
               <h3 className="text-lg font-bold text-gray-800">
-                {product.name}
+                {product.productName}
               </h3>
               <h4 className="text-lg text-gray-800 font-bold mt-6">
                 {product.price} Rs.

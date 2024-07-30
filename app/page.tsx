@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -32,44 +33,44 @@ export default function Home() {
 
               <ul className="mt-8 space-y-4">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                   href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Slippers{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Bellies{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Shoes{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Sandals{" "}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -79,44 +80,44 @@ export default function Home() {
 
               <ul className="mt-8 space-y-4">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Slippers{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Shoes{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Sandals{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Jutti{" "}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -126,44 +127,44 @@ export default function Home() {
 
               <ul className="mt-8 space-y-4">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Slippers{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Bellies{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Shoes{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Sandals{" "}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -173,44 +174,44 @@ export default function Home() {
 
               <ul className="mt-8 space-y-4">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Slippers{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Shoes{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Sandals{" "}
-                  </a>
+                  </Link>
                 </li>
                 {/* <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/user/product-list" 
                     title=""
                     className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                   >
                     {" "}
                     Privacy Policy{" "}
-                  </a>
+                  </Link>
                 </li> */}
               </ul>
             </div>
@@ -470,13 +471,13 @@ export default function Home() {
               <div className="flex items-start justify-between mt-4 space-x-4">
                 <div>
                   <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                    <a href="#" title="">
+                    <Link href="/user/product-list"  title="">
                       Beoplay M5 Bluetooth Speaker
                       <span
                         className="absolute inset-0"
                         aria-hidden="true"
                       ></span>
-                    </a>
+                    </Link>
                   </h3>
                   <div className="flex items-center mt-2.5 space-x-px">
                     <svg
@@ -541,13 +542,13 @@ export default function Home() {
               <div className="flex items-start justify-between mt-4 space-x-4">
                 <div>
                   <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                    <a href="#" title="">
+                    <Link href="/user/product-list"  title="">
                       Apple Smart Watch 6 - Special Edition
                       <span
                         className="absolute inset-0"
                         aria-hidden="true"
                       ></span>
-                    </a>
+                    </Link>
                   </h3>
                   <div className="flex items-center mt-2.5 space-x-px">
                     <svg
@@ -617,13 +618,13 @@ export default function Home() {
               <div className="flex items-start justify-between mt-4 space-x-4">
                 <div>
                   <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                    <a href="#" title="">
+                    <Link href="/user/product-list"  title="">
                       Beylob 90 Speaker
                       <span
                         className="absolute inset-0"
                         aria-hidden="true"
                       ></span>
-                    </a>
+                    </Link>
                   </h3>
                   <div className="flex items-center mt-2.5 space-x-px">
                     <svg
@@ -692,13 +693,13 @@ export default function Home() {
               <div className="flex items-start justify-between mt-4 space-x-4">
                 <div>
                   <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                    <a href="#" title="">
+                    <Link href="/user/product-list"  title="">
                       Martino 75 Bluetooth
                       <span
                         className="absolute inset-0"
                         aria-hidden="true"
                       ></span>
-                    </a>
+                    </Link>
                   </h3>
                   <div className="flex items-center mt-2.5 space-x-px">
                     <svg

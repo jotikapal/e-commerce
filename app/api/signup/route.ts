@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 
 export const POST = async (req: any) => {
     try {
-        const { name, email, password } = await req.json();
+        const { firstName, email, password } = await req.json();
         await connect();
 
         const existingUser = await User.findOne({ email }).lean(); // always use lean if not updating
@@ -16,7 +16,7 @@ export const POST = async (req: any) => {
 
         const hashedPassword = await bcrypt.hash(password, 5);
         const newUser = new User({
-            name,
+            firstName,
             email,
             password: hashedPassword,
         })

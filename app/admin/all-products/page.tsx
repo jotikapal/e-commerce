@@ -69,7 +69,7 @@ const page = () => {
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
+                                <th>ProductName</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>Category</th>
@@ -86,7 +86,7 @@ const page = () => {
                                 return (
                                     <tr key={item._id}>
                                         <td>{index + 1}</td>
-                                        <td>{item.name}</td>
+                                        <td>{item.productName}</td>
                                         <td>{item.description}</td>
                                         <td>
                                             <div className="flex items-center gap-3">

@@ -40,7 +40,7 @@ const Page = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const name = e.target[0].value;
+    const productName = e.target[0].value;
     const description = e.target[1].value;
     const image = e.target[2].value;
     const categoryId = e.target[3].value;
@@ -53,7 +53,7 @@ const Page = () => {
     }
 
     if (
-      !validateField(name, "Name") ||
+      !validateField(productName, "ProductName") ||
       !validateField(description, "Description") ||
       !validateField(image, "Image") ||
       !validateField(categoryId, "Category") ||
@@ -72,7 +72,7 @@ const Page = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
+          productName,
           description,
           image: `${supabaseUrl}/storage/v1/object/public/${file}`,
           categoryId,
@@ -175,7 +175,7 @@ const Page = () => {
           <input
             type="text"
             className="w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2"
-            placeholder="Name"
+            placeholder="ProductName"
             required
           />
 

@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -10,10 +10,16 @@ const Login = () => {
   const session = useSession();
 
   useEffect(() => {
-       if (session.status === "authenticated") {
-         router.replace("/");
-       }
-     }, [session, router]);
+    if (session.status === "authenticated") {
+      if ((session.data.user.userType = "ADMIN")) {
+        router.replace("/admin");
+      }
+      if ((session.data.user.userType = "CUSTOMER")) {
+        router.replace("/");
+      }
+    }
+    console.log(session, "session");
+  }, [session, router]);
 
   const isValidEmail = (email: string) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -40,53 +46,59 @@ const Login = () => {
       email,
       password,
     });
-    console.log(res,"response")
+    console.log(res, "response");
 
     if (res?.error) {
       setError("Invalid email or password");
-      if (res?.url) router.replace("/");
     } else {
+      // console.log(session,"session")
       setError("");
     }
   };
 
   return (
-    // session.status !== "authenticated" && 
-    <div className='flex justify-center w-full my-24'>
-      <div className='flex justify-center flex-col w-3/12 border rounded bg-gray-100 px-7 py-10'>
-        <div className='flex justify-center mb-10'>
-          <h2 className='text-xl'>Login</h2>
+    <div className="flex justify-center w-full my-24">
+      <div className="flex justify-center flex-col w-3/12 border rounded bg-gray-100 px-7 py-10">
+        <div className="flex justify-center mb-10">
+          <h2 className="text-xl">Login</h2>
         </div>
+        {/* {JSON.stringify(session)} */}
         <form onSubmit={handleSubmit}>
           <input
-            type='text'
-            className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
-            placeholder='Email'
+            type="text"
+            className="w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2"
+            placeholder="Email"
             required
           />
           <input
-            type='password'
-            className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
-            placeholder='Password'
+            type="password"
+            className="w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2"
+            placeholder="Password"
             required
           />
           <button
-            type='submit'
-            className='w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-400'
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-400"
           >
             {""}
-            Login</button>
-          <p className='text-red-600 text-[16px] mb-4'>{error && error}</p>
+            Login
+          </button>
+          <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        <div className='flex justify-center flex-col mt-7'>
-          <div className='text-gray-500 mb-2 text-center'>-OR-</div>
+        <div className="flex justify-center flex-col mt-7">
+          <div className="text-gray-500 mb-2 text-center">-OR-</div>
           <div>
-            <Link href="/signup" className='block text-blue-500 hover:underline text-center'>SignUp</Link>
+            <Link
+              href="/signup"
+              className="block text-blue-500 hover:underline text-center"
+            >
+              SignUp
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;

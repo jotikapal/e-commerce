@@ -69,19 +69,24 @@ const page = () => {
                     <input
                         type='text'
                         className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
-                        placeholder='Name'
+                        placeholder='Firstname*'
                         required
+                    />
+                     <input
+                        type='text'
+                        className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
+                        placeholder='Lastname'
                     />
                     <input
                         type='text'
                         className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
-                        placeholder='Email'
+                        placeholder='Email*'
                         required
                     />
                     <input
                         type='password'
                         className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
-                        placeholder='Password'
+                        placeholder='Password*'
                         required
                     />
                     <button

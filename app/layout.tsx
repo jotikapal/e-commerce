@@ -5,10 +5,7 @@ import Navbar from "./components/Navbar";
 
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/db/SessionProvider";
-import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
-import { useEffect } from "react";
-// import Login from "./login/page";
 
 const inter = Inter({ subsets: ["latin"] });
 

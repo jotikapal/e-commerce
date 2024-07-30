@@ -1,24 +1,24 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
+import { type } from "os";
 
 const { Schema } = mongoose;
 const orderSchema = new Schema({
-  name: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  email: {
+  addressId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Address",
     required: true,
   },
-  contactNumber: {
-    type: Number,
-    required: true,
+  products:{
+    type:Array,
+    required:true
   },
-  address: {
-    type: String,
-    required: true,
-  },
-});
-export default mongoose.models.Order || mongoose.model('Order',orderSchema);
+  totalPrice:{
+    type:Number,
+  }
+}, { timestamps: true });
+export default mongoose.models.Order || mongoose.model("Order", orderSchema);

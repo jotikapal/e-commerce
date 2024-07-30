@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 interface Product {
   _id: number;
   image: string;
-  name: string;
+  productName: string;
   price: number;
   quantity: number;
 }
@@ -75,7 +75,7 @@ const Cart = () => {
                     <div className="flex flex-col gap-4">
                       <div>
                         <h3 className="text-base font-bold text-gray-800">
-                          {item.name}
+                          {item.productName}
                         </h3>
                         <p className="text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2">
                           Color:{" "}
@@ -188,11 +188,8 @@ const Cart = () => {
                   Buy Now
                 </button>
                 <button
-                  type="button"
                   className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
-                >
-                  Continue Shopping{" "}
-                </button>
+                ><Link href="/">Continue Shopping{" "}</Link></button>
               </Link>
             </div>
 

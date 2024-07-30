@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
-import { type } from "os";
 const { Schema } = mongoose;
 const userSchema = new Schema(
     {
-        name: {
+        firstName: {
             type: String,
             required: true
+        },
+        lastName: {
+            type: String,
         },
         email: {
             type: String,
@@ -19,8 +21,11 @@ const userSchema = new Schema(
         userType: {
             type: String,
             enum: ['CUSTOMER', 'ADMIN'],
-            default: 'ADMIN'
-        }
+            default: 'CUSTOMER'
+        },
+        contactNumber: {
+            type: Number,
+          },
     },
     { timestamps: true }
 )

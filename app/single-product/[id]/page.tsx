@@ -30,7 +30,7 @@ const SingleProductPage = ({
     }
 
     const deleteProduct = async () => {
-        const hasConfirmed = confirm(`Are you sure you want to delete this ${data.name}?`)
+        const hasConfirmed = confirm(`Are you sure you want to delete this ${data.productName}?`)
         if (hasConfirmed) {
             try {
                 await fetch(`/api/product/${params.id}`, {
@@ -70,7 +70,7 @@ const SingleProductPage = ({
                                 <div className='mb-2'>Price:</div>
                             </div>
                             <div className=''>
-                                <div className='mb-2'>{data.name}</div>
+                                <div className='mb-2'>{data.productName}</div>
                                 <div className='mb-2'>{data.description}</div>
                                 <div className='mb-2'>{data.image}</div>
                                 <div className='mb-2'>{data.category}</div>

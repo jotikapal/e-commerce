@@ -7,7 +7,7 @@ import Category from '@/models/Category';
 import Subcategory from '@/models/Subcategory';
 
 const productSchema = z.object({
-    name: z.string().min(3, { message: "Must be 3 or more characters long" }),
+    productName: z.string().min(3, { message: "Must be 3 or more characters long" }),
     description: z.string().min(10, { message: "Must be 10 characters long" }),
     image: z.string().url({ message: "Invalid url" }),
     // category: z.string().min(3, { message: "Must be 3 or more characters long" }),

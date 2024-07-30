@@ -22,7 +22,7 @@ export const GET = async (req: any, { params }: { params: { id: string } }) => {
 }
 
 const productSchema = z.object({
-    name: z.string().min(3, { message: "Must be 3 or more characters long" }),
+    ProductName: z.string().min(3, { message: "Must be 3 or more characters long" }),
     description: z.string().length(3, { message: "Must be exactly 3 characters long" }),
     image: z.string().url({ message: "Invalid url" }),
     category: z.string().min(3, { message: "Must be 3 or more characters long" }),
@@ -49,7 +49,7 @@ export const PATCH = async (req: Request, { params }: { params: { id: string } }
         if (!product) {
             return NextResponse.json({ message: "Product not found" }, { status: 404 });
         }
-        product.name = parsedData.name;
+        product.productName = parsedData.ProductName;
         product.description = parsedData.description;
         product.image = parsedData.image;
         product.category = parsedData.category;
