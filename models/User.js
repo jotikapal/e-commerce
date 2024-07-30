@@ -26,7 +26,8 @@ const userSchema = new Schema(
         contactNumber: {
             type: Number,
           },
-    },
+        }
+
     { timestamps: true }
 )
 export default mongoose.models.User || mongoose.model("User", userSchema);

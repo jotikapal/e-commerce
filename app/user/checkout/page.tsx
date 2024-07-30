@@ -98,6 +98,8 @@ const Checkout = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          userId: session.user.id,
+          addressId: userdata.addressId,
           firstName,
           lastName,
           email,
