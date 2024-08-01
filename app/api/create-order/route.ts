@@ -20,7 +20,7 @@ export const POST = async (req: any) => {
       totalPrice,
     } = await req.json();
     await connect();
-    // return NextResponse.json({message: "svjk"}, { status: 201 });
+    
     let user = await User.findOne({ email });
 
     if (user) {
@@ -64,52 +64,3 @@ export const POST = async (req: any) => {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 };
-
-export const GET = async () => {
-  try {
-    await connect();
-
-    const order = await Order.find().populate("userId").populate("addressId");
-    console.log(order, "order");
-    return NextResponse.json(order, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json(
-      { message: "failed to get order", error: error.message },
-      { status: 500 }
-    );
-  }
-};
-
-// User -
-// cont user = User.findOne({ email: emal});
-// User.findById(id)
-// User.find({ userType: 'amdin'}).sort().populate()
-
-// // user find karna , user  karna and then udpate
-// user.phoneNo = 12321321;
-// user.firstName = sdfsdfsdf;
-
-// await user.save()
-
-// // data sidha update karna hia
-// User.findOneAndUpdate({ email: emal}, {
-//     phoneNo:23434
-// })
-
-// User.findOneAndDelete({ emal: email})
-
-// api/update-rode-from-store
-// orderId
-// paid:true
-
-// // userId
-// // totalPurchasedOrders
-// const order = Order.findById(orderId); // 1000
-// addressId, userId, products, totoaPrice
-// const userId = order.userId;
-
-// const user = User.findById(userId);
-// const { totalPurchasedOrders } = user; `1000` 500
-// const updatedTotalPruchaseOrder = totoaPrice + totalPurchasedOrders;
-// user.totalPurchasedOrders = updatedTotalPruchaseOrder;
-// awiat user.save();

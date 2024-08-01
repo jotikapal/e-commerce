@@ -23,6 +23,7 @@ const orderSchema = new Schema({
   },
   orderId:{
     type:Number,
+    unique: true,
     required:true
   }
 }, { timestamps: true });

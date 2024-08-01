@@ -24,7 +24,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Navbar />
-          <div className="flex flex-row ">            
+          <div className="flex flex-row justify-center">            
             {children}
           </div>
           <Footer />
