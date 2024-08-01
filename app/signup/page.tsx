@@ -9,11 +9,12 @@ const page = () => {
 
     const isValidEmail = (email: string) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        // const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
         return emailRegex.test(email);
     };
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const name = e.target[0].value
+        const firstName = e.target[0].value
         const email = e.target[1].value;
         const password = e.target[2].value;
         // const email = e.target.value;
@@ -21,7 +22,7 @@ const page = () => {
 
         console.log(email, password)
 
-        if (name.length < 2) {
+        if (firstName.length < 2) {
             setError("Name is invalid");
             return;
         }
@@ -43,7 +44,7 @@ const page = () => {
                     "Content-Type": "aplication/json",
                 },
                 body: JSON.stringify({
-                    name,
+                    firstName,
                     email,
                     password
                 })
@@ -72,11 +73,11 @@ const page = () => {
                         placeholder='Firstname*'
                         required
                     />
-                     <input
+                     {/* <input
                         type='text'
                         className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'
                         placeholder='Lastname'
-                    />
+                    /> */}
                     <input
                         type='text'
                         className='w-full border rounded focus:outline-none focus:border-blue-400 focus:text-black mb-5 p-2'

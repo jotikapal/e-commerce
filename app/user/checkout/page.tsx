@@ -15,7 +15,8 @@ const Checkout = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [userdata, setUserData] = useState<any>(null);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [overAllPrice,setOverAllPrice] = useState(70)
+  // const overAllPrice= (70);
+  const tax = 70;
   const [error, setError] = useState("");
 
   const router = useRouter();
@@ -54,7 +55,7 @@ const Checkout = () => {
       0
     );
     setTotalPrice(total);
-    setOverAllPrice( 70 +  total )
+    // setOverAllPrice(70 + total);
   }, [session]);
 
   const validateField = (field: any, fieldName: any) => {
@@ -67,6 +68,7 @@ const Checkout = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    console.log("dcjsdvsv")
 
     const firstName = e.target[0].value;
     const lastName = e.target[1].value;
@@ -79,7 +81,7 @@ const Checkout = () => {
 
     if (
       !validateField(firstName, "First Name") ||
-      !validateField(lastName, "Last Name") ||
+      // !validateField(lastName, "Last Name") ||
       !validateField(email, "Email") ||
       !validateField(contactNumber, "Contact no.") ||
       !validateField(addressLine, "Address Line") ||
@@ -90,6 +92,7 @@ const Checkout = () => {
       return;
     }
     setError("");
+    console.log("dcjsdvsv 234234")
 
     try {
       const response = await fetch("/api/create-order", {
@@ -99,7 +102,7 @@ const Checkout = () => {
         },
         body: JSON.stringify({
           userId: session.user.id,
-          addressId: userdata.addressId,
+          // addressId:,
           firstName,
           lastName,
           email,
@@ -109,7 +112,7 @@ const Checkout = () => {
           state,
           zipCode,
           products,
-          totalPrice,
+          totalPrice: totalPrice + tax,
           // productName, description, image, categoryId, subCategoryId, variants, price
         }),
       });
@@ -170,7 +173,8 @@ const Checkout = () => {
                 </div>
                 <div className="text-white my-4 text-xs space-y-2">
                   <div className="flex justify-between">
-                    <p className="">Product Price: </p>{totalPrice}
+                    <p className="">Product Price: </p>
+                    {totalPrice}
                   </div>
                   <div className="flex justify-between">
                     <p className="">Shipping charges: </p>50
@@ -183,7 +187,7 @@ const Checkout = () => {
 
               <div className="md:absolute md:left-0 md:bottom-0 bg-gray-800 w-full p-4 text-white">
                 <h4 className="flex flex-wrap gap-4 text-base ">
-                  Total <span className="ml-auto">{overAllPrice}</span>
+                  Total <span className="ml-auto">{totalPrice + tax}</span>
                 </h4>
               </div>
             </div>
@@ -202,8 +206,8 @@ const Checkout = () => {
                   <div>
                     <input
                       type="text"
-                      placeholder="First Name *"
-                      value={userdata ? userdata.name : ""}
+                      placeholder="First Name"
+                      value={userdata ? userdata.firstName : ""}
                       className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
                       required
                     />
@@ -229,8 +233,11 @@ const Checkout = () => {
 
                   <div>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Contact no. *"
+                      pattern="[0-9]{10,10}"
+                      maxlength="10"
+                      value={userdata ? userdata.contactNumber : ""}
                       className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
                       required
                     />

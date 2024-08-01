@@ -25,8 +25,9 @@ const userSchema = new Schema(
         },
         contactNumber: {
             type: Number,
+            unique: true,
           },
-        }
+        },
 
     { timestamps: true }
 )

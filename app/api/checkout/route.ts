@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export const POST = async (req: any) => {
   try {
     const {
-      name,
+      firstName,
       lastName,
       email,
       contactNumber,
@@ -26,7 +26,7 @@ export const POST = async (req: any) => {
     await connect();
 
     const newOrder = new Order({
-      name,
+      firstName,
       lastName,
       email,
       contactNumber,
